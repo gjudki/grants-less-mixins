@@ -1,0 +1,195 @@
+/* MIXINS */
+
+.rad (@rad) {
+  border-radius: @rad;
+  -webkit-border-radius: @rad;
+  -moz-border-radius: @rad;
+  .pie;
+}
+
+.rad-top (@rad) {
+  border-radius: @rad @rad 0 0;
+  -webkit-border-radius: @rad @rad 0 0;
+  -moz-border-radius: @rad @rad 0 0;
+}
+
+.rad-btm (@rad) {
+  border-radius: 0 0 @rad @rad;
+  -webkit-border-radius: 0 0 @rad @rad;
+  -moz-border-radius: 0 0 @rad @rad;
+}
+
+.rad-right (@rad) {
+  border-radius: 0 @rad @rad 0;
+  -webkit-border-radius: 0 @rad @rad 0;
+  -moz-border-radius: 0 @rad @rad 0;
+}
+
+.rad-left (@rad) {
+  border-radius: @rad 0 0 @rad;
+  -webkit-border-radius: @rad 0 0 @rad;
+  -moz-border-radius: @rad 0 0 @rad;
+}
+
+.bs (@bs) {
+  box-shadow: @bs;
+  -webkit-box-shadow: @bs;
+  -moz-box-shadow: @bs;
+}
+
+.ts (@ts) {text-shadow: @ts;}
+
+.cols(@width, @count, @gap) {
+  column-count:@count;
+  column-gap:@gap;
+  column-width:@width;
+  -webkit-column-count:@count;
+  -webkit-column-gap:@gap;
+  -webkit-column-width:@width;
+  -moz-column-count:@count;
+  -moz-column-gap:@gap;
+  -moz-column-width:@width;
+}
+
+.cols-2 {
+  .cols(50%, 2, @gu);
+}
+
+.cols-3 {
+  .cols(33%, 3, @gu);
+}
+
+.pie {
+	position: relative;
+	behavior:url(/scripts/PIE.htc);
+}
+
+.pieGrad {
+  behavior:url(/scripts/PIE.htc);
+}
+
+.fa {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+}
+
+.trans (@trans) {
+  -webkit-transition: @trans;
+  -moz-transition: @trans;
+  -o-transition: @trans;
+  -ms-transition: @trans;
+  transition: @trans;
+}
+
+.grad-linear (@b1, @b1L, @b2, @b2L, @b3:0, @b3L:0, @b4:0, @b4L:0) {
+
+  .grad-stops(@b1, @b1L, @b2, @b2L, @b3, @b3L, @b4, @b4L) when (@b3 = 0) {
+    background: @b1; /* Old browsers */  
+    background: -moz-linear-gradient(top,  @b1 @b1L, @b2 @b2L); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(@b1L, @b1), color-stop(@b2L, @b2)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  @b1 @b1L, @b2 @b2L); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  @b1 @b1L, @b2 @b2L); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  @b1 @b1L, @b2 @b2L); /* IE10+ */
+    background: linear-gradient(to bottom,  @b1 @b1L, @b2 @b2L); /* W3C */
+    -pie-background: linear-gradient(@b1 @b1L, @b2 @b2L);
+    behavior:url(/shared_css/css3pie/PIE.htc);
+    position:relative;
+  }
+
+  .grad-stops(@b1, @b1L, @b2, @b2L, @b3, @b3L, @b4, @b4L) when (iscolor(@b3)) {
+    background: @b1; /* Old browsers */  
+    background: -moz-linear-gradient(top,  @b1 @b1L, @b2 @b2L, @b3 @b3L); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(@b1L, @b1), color-stop(@b2L, @b2), color-stop(@b3L, @b3)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  @b1 @b1L, @b2 @b2L, @b3 @b3L); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  @b1 @b1L, @b2 @b2L, @b3 @b3L); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  @b1 @b1L, @b2 @b2L, @b3 @b3L); /* IE10+ */
+    background: linear-gradient(to bottom,  @b1 @b1L, @b2 @b2L, @b3 @b3L); /* W3C */
+    -pie-background: linear-gradient(@b1 @b1L, @b2 @b2L, @b3 @b3L);
+    behavior:url(/shared_css/css3pie/PIE.htc);
+    position:relative;
+  }
+
+  .grad-stops(@b1, @b1L, @b2, @b2L, @b3, @b3L, @b4, @b4L) when (iscolor(@b4)) {
+    background: @b1; /* Old browsers */  
+    background: -moz-linear-gradient(top,  @b1 @b1L, @b2 @b2L, @b3 @b3L, @b4 @b4L); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(@b1L, @b1), color-stop(@b2L, @b2), color-stop(@b3L, @b3), color-stop(@b4L, @b4)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  @b1 @b1L, @b2 @b2L, @b3 @b3L, @b4 @b4L); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  @b1 @b1L, @b2 @b2L, @b3 @b3L, @b4 @b4L); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  @b1 @b1L, @b2 @b2L, @b3 @b3L, @b4 @b4L); /* IE10+ */
+    background: linear-gradient(to bottom,  @b1 @b1L, @b2 @b2L, @b3 @b3L, @b4 @b4L); /* W3C */
+    -pie-background: linear-gradient(@b1 @b1L, @b2 @b2L, @b3 @b3L, @b4 @b4L);
+    behavior:url(/shared_css/css3pie/PIE.htc);
+    position:relative;
+  }
+
+  .grad-stops(@b1, @b1L, @b2, @b2L, @b3, @b3L, @b4, @b4L);
+
+}
+
+.grad-linear-hov (@b1, @b1L, @b2, @b2L, @gtype, @gnum) {
+  background: @b1; /* Old browsers */  
+  background: -moz-linear-gradient(top,  @b1 @b1L, @b2 @b2L); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(@b1L, @b1), color-stop(@b2L, @b2)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  @b1 @b1L, @b2 @b2L); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  @b1 @b1L, @b2 @b2L); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  @b1 @b1L, @b2 @b2L); /* IE10+ */
+  background: linear-gradient(to bottom,  @b1 @b1L, @b2 @b2L); /* W3C */
+  -pie-background: linear-gradient(@b1 @b1L, @b2 @b2L);
+  behavior:url(/shared_css/css3pie/PIE.htc);
+  position:relative; 
+  
+  &:hover {  
+    .grad-type-alter(@b1, @b1L, @b2, @b2L, @gtype, @gnum){
+      
+      .grad-alt-type(@b1, @b2, @gtype, @gnum) when (@gtype = lighten){
+        @b1h: lighten(@b1, @gnum);
+        @b2h: lighten(@b2, @gnum);
+        .grad-linear(@b1h, @b1L, @b2h, @b2L);
+      }
+
+      .grad-alt-type(@b1, @b2, @gtype, @gnum) when (@gtype = darken){
+        @b1h: darken(@b1, @gnum);
+        @b2h: darken(@b2, @gnum);
+        .grad-linear(@b1h, @b1L, @b2h, @b2L);
+      }
+
+      .grad-alt-type(@b1, @b2, @gtype, @gnum) when (@gtype = fadein){
+        @b1h: fadein(@b1, @gnum);
+        @b2h: fadein(@b2, @gnum);
+        .grad-linear(@b1h, @b1L, @b2h, @b2L);
+      }
+
+      .grad-alt-type(@b1, @b2, @gtype, @gnum) when (@gtype = fadeout){
+        @b1h: fadeout(@b1, @gnum);
+        @b2h: fadeout(@b2, @gnum);
+        .grad-linear(@b1h, @b1L, @b2h, @b2L);
+      }
+
+      .grad-alt-type(@b1, @b2, @gtype, @gnum) when (@gtype = saturate){
+        @b1h: saturate(@b1, @gnum);
+        @b2h: saturate(@b2, @gnum);
+        .grad-linear(@b1h, @b1L, @b2h, @b2L);
+      }
+
+      .grad-alt-type(@b1, @b2, @gtype, @gnum) when (@gtype = desaturate){
+        @b1h: desaturate(@b1, @gnum);
+        @b2h: desaturate(@b2, @gnum);
+        .grad-linear(@b1h, @b1L, @b2h, @b2L);
+      }
+
+      .grad-alt-type(@b1, @b2, @gtype, @gnum) when (@gtype = reverse){
+        @b1h: @b2;
+        @b2h: @b1;
+        .grad-linear(@b1h, @b1L, @b2h, @b2L);
+      }
+        
+      .grad-alt-type(@b1, @b2, @gtype, @gnum);
+
+    }
+
+    .grad-type-alter(@b1, @b1L, @b2, @b2L, @gtype, @gnum);
+  }
+}
